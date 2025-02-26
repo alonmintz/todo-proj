@@ -62,16 +62,21 @@ export function TodoIndex() {
     todoActions
       .saveTodo(todoToSave)
       .then((savedTodo) => {
-        console.log({ savedTodo });
-
         showSuccessMsg(
           `Todo is ${savedTodo.isDone ? "done" : "back on your list"}`
         );
+        if (savedTodo.isDone) {
+          updateLoggedInUser(`Completed Todo ID: ${savedTodo._id}`);
+        }
       })
       .catch((err) => {
         console.log("err:", err);
         showErrorMsg("Cannot toggle todo " + todoToSave._id);
       });
+  }
+
+  function updateLoggedInUser(activityTxt) {
+    userActions.updateBalance(loggedInUser, activityTxt).then(console.log);
   }
 
   function onSetFilterBy(updatedFilterBy) {

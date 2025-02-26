@@ -26,8 +26,6 @@ export function AppHeader() {
     setIsLoginSignupOpen((prev) => !prev);
   }
 
-  console.log({ loggedInUser });
-
   return (
     <header className="app-header full main-layout">
       <section className="header-container">

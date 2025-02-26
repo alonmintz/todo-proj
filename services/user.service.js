@@ -8,6 +8,7 @@ export const userService = {
   getById,
   query,
   getEmptyCredentials,
+  updateUserBalance,
 };
 const STORAGE_KEY_LOGGEDIN = "user";
 const STORAGE_KEY = "userDB";
@@ -49,11 +50,30 @@ function getLoggedInUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN));
 }
 
+function updateUser(userId, newBalance) {
+  return getById(userId)
+    .then((user) => ({ ...user, balance: newBalance }))
+    .then((userToUpdate) => storageService.put(STORAGE_KEY, userToUpdate))
+    .then(_setLoggedInUser);
+}
+
+function updateUserBalance(userId, newBalance, newActivity) {
+  return getById(userId)
+    .then((user) => ({
+      ...user,
+      balance: newBalance,
+      activities: [newActivity, ...user.activities],
+    }))
+    .then((userToUpdate) => storageService.put(STORAGE_KEY, userToUpdate))
+    .then(_setLoggedInUser);
+}
+
 function _setLoggedInUser(user) {
   const userToSave = {
     _id: user._id,
     fullname: user.fullname,
     balance: user.balance,
+    activities: user.activities,
   };
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave));
   return userToSave;

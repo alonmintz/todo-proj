@@ -46,8 +46,19 @@ function logout() {
   });
 }
 
-function updateBalance(balance) {
-  //todo: complete
+function updateBalance({ _id: userId, balance }, activityTxt) {
+  const newBalance = balance + 10;
+  const newActivity = { txt: activityTxt, at: Date.now() };
+  return userService
+    .updateUserBalance(userId, newBalance, newActivity)
+    .then((loggedUser) => {
+      store.dispatch({ type: SET_USER, user: loggedUser });
+      return loggedUser;
+    })
+    .catch((err) => {
+      console.log("user action -> Cannot update balance", err);
+      throw err;
+    });
 }
 
 function addActivity(activity) {
