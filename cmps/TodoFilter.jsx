@@ -1,55 +1,73 @@
-const { useState, useEffect } = React
+import { utilService } from "../services/util.service.js";
+const { useRef, useEffect, useState } = React;
 
 export function TodoFilter({ filterBy, onSetFilterBy }) {
+  const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
+  const debounceOnSetFilterBy = useRef(
+    utilService.debounce(onSetFilterBy, 500)
+  ).current;
 
-    const [filterByToEdit, setFilterByToEdit] = useState({...filterBy})
+  useEffect(() => {
+    debounceOnSetFilterBy(filterByToEdit);
+  }, [filterByToEdit]);
 
-    useEffect(() => {
-        // Notify parent
-        onSetFilterBy(filterByToEdit)
-    }, [filterByToEdit])
+  function handleChange({ target }) {
+    const field = target.name;
+    let value = target.value;
 
-    function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
+    switch (target.type) {
+      case "number":
+      case "range":
+        value = +value || "";
+        break;
 
-        switch (target.type) {
-            case 'number':
-            case 'range':
-                value = +value || ''
-                break
+      case "checkbox":
+        value = target.checked;
+        break;
 
-            case 'checkbox':
-                value = target.checked
-                break
-
-            default: break
-        }
-
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
+      default:
+        break;
     }
+    setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }));
+  }
 
-    // Optional support for LAZY Filtering with a button
-    function onSubmitFilter(ev) {
-        ev.preventDefault()
-        onSetFilterBy(filterByToEdit)
-    }
+  const { txt, importance, isDone } = filterByToEdit;
 
-    const { txt, importance } = filterByToEdit
-    return (
-        <section className="todo-filter">
-            <h2>Filter Todos</h2>
-            <form onSubmit={onSubmitFilter}>
-                <input value={txt} onChange={handleChange}
-                    type="search" placeholder="By Txt" id="txt" name="txt"
-                />
-                <label htmlFor="importance">Importance: </label>
-                <input value={importance} onChange={handleChange}
-                    type="number" placeholder="By Importance" id="importance" name="importance"
-                />
-
-                <button hidden>Set Filter</button>
-            </form>
-        </section>
-    )
+  return (
+    <section className="todo-filter">
+      <h2>Filter Todos</h2>
+      <form>
+        <input
+          value={txt}
+          onChange={handleChange}
+          type="search"
+          placeholder="By Txt"
+          id="txt"
+          name="txt"
+        />
+        <label htmlFor="importance">Importance: </label>
+        <input
+          value={importance}
+          onChange={handleChange}
+          type="number"
+          min={0}
+          placeholder="By Importance"
+          id="importance"
+          name="importance"
+        />
+        <label htmlFor="isDone">Status: </label>
+        <select
+          name="isDone"
+          id="isDone"
+          value={isDone || ""}
+          onChange={handleChange}
+        >
+          <option value={""}>All</option>
+          <option value={false}>Active</option>
+          <option value={true}>Done</option>
+        </select>
+        <button hidden>Set Filter</button>
+      </form>
+    </section>
+  );
 }
