@@ -1,15 +1,25 @@
-import { userService } from "../../services/user.service";
+import { userService } from "../../services/user.service.js";
 import {
   SET_USER,
   UPDATE_BALANCE,
   ADD_USER_ACTIVITY,
-} from "../reducers/user.reducer";
+} from "../reducers/user.reducer.js";
 import { store } from "../store.js";
 
-export function login(user) {
+export const userActions = {
+  login,
+  signup,
+  logout,
+  updateBalance,
+  addActivity,
+};
+
+function login(user) {
   return userService
     .login(user)
     .then((loggedUser) => {
+      console.log(loggedUser);
+
       store.dispatch({ type: SET_USER, user: loggedUser });
     })
     .catch((err) => {
@@ -18,7 +28,7 @@ export function login(user) {
     });
 }
 
-export function signup(user) {
+function signup(user) {
   return userService
     .signup(user)
     .then((loggedUser) => {
@@ -30,16 +40,16 @@ export function signup(user) {
     });
 }
 
-export function logout() {
+function logout() {
   return userService.logout().then(() => {
     store.dispatch({ type: SET_USER, user: null });
   });
 }
 
-export function updateBalance(balance) {
+function updateBalance(balance) {
   //todo: complete
 }
 
-export function addActivity(activity) {
+function addActivity(activity) {
   //todo: complete
 }

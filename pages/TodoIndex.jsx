@@ -8,12 +8,16 @@ import { todoActions } from "../store/actions/todo.actions.js";
 import { ModalFrame } from "../cmps/modal/ModalFrame.jsx";
 import { ConfirmAction } from "../cmps/modal/ConfirmAction.jsx";
 import { utilService } from "../services/util.service.js";
+import { userActions } from "../store/actions/user.actions.js";
 
 const { useState, useEffect } = React;
 const { Link, useSearchParams } = ReactRouterDOM;
 const { useSelector, useDispatch } = ReactRedux;
 
 export function TodoIndex() {
+  const loggedInUser = useSelector(
+    (storeState) => storeState.userModule.loggedInUser
+  );
   const todos = useSelector((storeState) => storeState.todoModule.todos);
   const filterBy = useSelector((storeState) => storeState.todoModule.filterBy);
   const isLoading = useSelector(

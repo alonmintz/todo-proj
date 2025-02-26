@@ -23,8 +23,10 @@ function getById(userId) {
 function login({ username, password }) {
   return storageService.query(STORAGE_KEY).then((users) => {
     const user = users.find((user) => user.username === username);
-    if (user) return _setLoggedInUser(user);
-    else return Promise.reject("Invalid login");
+    if (!user || user.password !== password) {
+      return Promise.reject("Invalid login");
+    }
+    return _setLoggedInUser(user);
   });
 }
 
@@ -48,7 +50,11 @@ function getLoggedInUser() {
 }
 
 function _setLoggedInUser(user) {
-  const userToSave = { _id: user._id, fullname: user.fullname };
+  const userToSave = {
+    _id: user._id,
+    fullname: user.fullname,
+    balance: user.balance,
+  };
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave));
   return userToSave;
 }
@@ -56,8 +62,8 @@ function _setLoggedInUser(user) {
 function getEmptyCredentials() {
   return {
     fullname: "",
-    username: "muki",
-    password: "muki1",
+    username: "",
+    password: "",
   };
 }
 
