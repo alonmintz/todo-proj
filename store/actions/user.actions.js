@@ -61,6 +61,16 @@ function updateBalance({ _id: userId, balance }, activityTxt) {
     });
 }
 
-function addActivity(activity) {
-  //todo: complete
+function addActivity({ _id: userId }, activityTxt) {
+  const newActivity = { txt: activityTxt, at: Date.now() };
+  return userService
+    .addUserActivity(userId, newActivity)
+    .then((loggedUser) => {
+      store.dispatch({ type: ADD_USER_ACTIVITY, activity: newActivity });
+      return loggedUser;
+    })
+    .catch((err) => {
+      console.log("user action -> Cannot add activity", err);
+      throw err;
+    });
 }

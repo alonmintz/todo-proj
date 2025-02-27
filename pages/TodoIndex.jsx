@@ -27,7 +27,7 @@ export function TodoIndex() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-  const [todoIdToRemove, setTodoIdToRemove] = useState("");
+  const [todoToRemove, setTodoToRemove] = useState(null);
 
   useEffect(() => {
     dispatch({
@@ -43,17 +43,18 @@ export function TodoIndex() {
     });
   }, [filterBy]);
 
-  function onRemoveTodo(todoId) {
+  function onRemoveTodo(todo) {
     todoActions
-      .removeTodo(todoId)
+      .removeTodo(todo._id)
       .then(toggleIsConfirmOpen)
       .then(() => {
-        setTodoIdToRemove("");
+        setTodoToRemove(null);
         showSuccessMsg(`Todo removed`);
+        addUserActivity(`Removed Todo: ${todo.txt}`);
       })
       .catch((err) => {
         console.log("err:", err);
-        showErrorMsg("Cannot remove todo " + todoId);
+        showErrorMsg("Cannot remove todo " + todo._id);
       });
   }
 
@@ -66,7 +67,9 @@ export function TodoIndex() {
           `Todo is ${savedTodo.isDone ? "done" : "back on your list"}`
         );
         if (savedTodo.isDone) {
-          updateLoggedInUser(`Completed Todo ID: ${savedTodo._id}`);
+          addUserActivity(`Completed Todo: ${savedTodo.txt}`, true);
+        } else if (!savedTodo.isDone) {
+          addUserActivity(`Re-Activated Todo: ${savedTodo.txt}`);
         }
       })
       .catch((err) => {
@@ -75,8 +78,18 @@ export function TodoIndex() {
       });
   }
 
-  function updateLoggedInUser(activityTxt) {
-    userActions.updateBalance(loggedInUser, activityTxt).then(console.log);
+  function addUserActivity(activityTxt, includeBalanceUpdate) {
+    if (includeBalanceUpdate) {
+      userActions.updateBalance(loggedInUser, activityTxt).catch((err) => {
+        console.log("err:", err);
+        showErrorMsg("Cannot update balance");
+      });
+    } else {
+      userActions.addActivity(loggedInUser, activityTxt).catch((err) => {
+        console.log("err:", err);
+        showErrorMsg("Cannot add activity");
+      });
+    }
   }
 
   function onSetFilterBy(updatedFilterBy) {
@@ -87,8 +100,8 @@ export function TodoIndex() {
     setIsConfirmOpen((prevIsOpen) => !prevIsOpen);
   }
 
-  function onRemoveButtonClick(todoId) {
-    setTodoIdToRemove(todoId);
+  function onRemoveButtonClick(todo) {
+    setTodoToRemove(todo);
     toggleIsConfirmOpen();
   }
 
@@ -115,7 +128,7 @@ export function TodoIndex() {
         <ModalFrame onClose={toggleIsConfirmOpen}>
           <ConfirmAction
             action="remove"
-            onConfirm={() => onRemoveTodo(todoIdToRemove)}
+            onConfirm={() => onRemoveTodo(todoToRemove)}
             onCancel={toggleIsConfirmOpen}
           />
         </ModalFrame>
