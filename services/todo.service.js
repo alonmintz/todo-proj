@@ -12,7 +12,7 @@ export const COLORS = [
   "#F5F5F5", // Light Grey
 ];
 
-const COLORS_MAP = {
+export const COLORS_MAP = {
   red: {
     light: "#FFCDD2",
     dark: "#B71C1C",
@@ -86,7 +86,6 @@ function remove(todoId) {
 
 function save(todo) {
   if (todo._id) {
-    // TODO - updatable fields
     todo.updatedAt = Date.now();
     return storageService.put(TODO_KEY, todo);
   } else {
@@ -97,7 +96,12 @@ function save(todo) {
 }
 
 function getEmptyTodo(txt = "", importance = 5) {
-  return { txt, importance, isDone: false };
+  return {
+    txt,
+    importance,
+    isDone: false,
+    bgColor: { light: "#F5F5F5", dark: "#616161" },
+  };
 }
 
 function getDefaultFilter() {

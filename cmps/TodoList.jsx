@@ -2,8 +2,6 @@ import { TodoPreview } from "./TodoPreview.jsx";
 const { Link } = ReactRouterDOM;
 
 export function TodoList({ todos, onRemoveTodo, onToggleTodo, isDarkMode }) {
-  //todo: ask if using a style attribute overides the <li> css?
-
   return (
     <ul className="todo-list">
       {todos.map((todo) => (

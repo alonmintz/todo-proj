@@ -15,6 +15,7 @@ import { store } from "./store/store.js";
 import { UserDetails } from "./pages/UserDetails.jsx";
 import { SideNav } from "./cmps/SideNav.jsx";
 import { AppFooter } from "./cmps/AppFooter.jsx";
+import { UserMsg } from "./cmps/UserMsg.jsx";
 
 export function RootCmp() {
   return (
@@ -39,6 +40,7 @@ export function RootCmp() {
             </Routes>
           </main>
           <AppFooter />
+          <UserMsg />
         </section>
       </Router>
     </Provider>

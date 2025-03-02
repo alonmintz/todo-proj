@@ -21,7 +21,6 @@ export function TodoEdit() {
     if (params.todoId) loadTodo();
   }, []);
 
-  //todo: ask if calling the service directly is fine because there is no use for store.
   function loadTodo() {
     todoService
       .get(params.todoId)
@@ -113,6 +112,7 @@ export function TodoEdit() {
           <ColorSelector
             onSetColor={handleColorChange}
             currentColor={bgColor}
+            isDarkMode={loggedInUser ? loggedInUser.prefs.isDarkMode : false}
           />
           <button>Save</button>
         </form>

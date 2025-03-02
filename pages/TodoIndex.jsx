@@ -25,10 +25,10 @@ export function TodoIndex() {
     (storeState) => storeState.todoModule.isLoading
   );
   const dispatch = useDispatch();
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [todoToRemove, setTodoToRemove] = useState(null);
+  const [activeDisplayMode, setActiveDisplayMode] = useState("icon");
 
   useEffect(() => {
     dispatch({
@@ -81,10 +81,19 @@ export function TodoIndex() {
 
   function addUserActivity(activityTxt, includeBalanceUpdate) {
     if (includeBalanceUpdate) {
-      userActions.updateBalance(loggedInUser, activityTxt).catch((err) => {
-        console.log("err:", err);
-        showErrorMsg("Cannot update balance");
-      });
+      userActions
+        .updateBalance(loggedInUser, activityTxt)
+        .then((updatedUser) => {
+          setTimeout(
+            () =>
+              showSuccessMsg(`Great! Current Balance: ${updatedUser.balance}`),
+            2500
+          );
+        })
+        .catch((err) => {
+          console.log("err:", err);
+          showErrorMsg("Cannot update balance");
+        });
     } else {
       userActions.addActivity(loggedInUser, activityTxt).catch((err) => {
         console.log("err:", err);
@@ -106,27 +115,56 @@ export function TodoIndex() {
     toggleIsConfirmOpen();
   }
 
+  function toggleActiveDisplayMode(mode) {
+    setActiveDisplayMode(mode);
+  }
+
   //   if (isLoading) return <div>Loading...</div>;
   return (
     <MainWrapper>
       <section className="todo-index">
         <TodoFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-        <div>
-          <Link to="/todo/edit" className="btn">
-            Add Todo
-          </Link>
+        <div className="index-buttons">
+          <div>
+            <Link to="/todo/edit" className="btn">
+              <i class="fa-solid fa-plus"></i> Add Todo
+            </Link>
+          </div>
+          <div>
+            <button
+              onClick={() => toggleActiveDisplayMode("icon")}
+              style={{
+                backgroundColor:
+                  activeDisplayMode === "icon" ? "lightgray" : "white",
+              }}
+            >
+              <i className="fa-solid fa-cubes"></i>
+            </button>
+            <button
+              onClick={() => toggleActiveDisplayMode("list")}
+              style={{
+                backgroundColor:
+                  activeDisplayMode === "list" ? "lightgray" : "white",
+              }}
+            >
+              <i className="fa-solid fa-table-list"></i>
+            </button>
+          </div>
         </div>
-        <TodoList
-          todos={todos}
-          onRemoveTodo={onRemoveButtonClick}
-          onToggleTodo={onToggleTodo}
-          isDarkMode={loggedInUser.prefs.isDarkMode}
-        />
+        {activeDisplayMode === "icon" && (
+          <TodoList
+            todos={todos}
+            onRemoveTodo={onRemoveButtonClick}
+            onToggleTodo={onToggleTodo}
+            isDarkMode={loggedInUser.prefs.isDarkMode}
+          />
+        )}
+        {activeDisplayMode === "list" && (
+          <div style={{ width: "60%", margin: "auto" }}>
+            <DataTable todos={todos} onRemoveTodo={onRemoveTodo} />
+          </div>
+        )}
         <hr />
-        <h2>Todos Table</h2>
-        <div style={{ width: "60%", margin: "auto" }}>
-          <DataTable todos={todos} onRemoveTodo={onRemoveTodo} />
-        </div>
         {isConfirmOpen && (
           <ModalFrame onClose={toggleIsConfirmOpen}>
             <ConfirmAction

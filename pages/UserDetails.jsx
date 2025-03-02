@@ -40,6 +40,8 @@ export function UserDetails() {
     });
   }
 
+  //TODO: complete user details page with edit+ activities + style
+
   return (
     <MainWrapper>
       <section className="user-details">

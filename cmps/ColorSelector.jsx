@@ -1,14 +1,31 @@
-import { COLORS } from "../services/todo.service.js";
+import { COLORS_MAP } from "../services/todo.service.js";
 
-export function ColorSelector({ onSetColor, currentColor }) {
+export function ColorSelector({ onSetColor, currentColor, isDarkMode }) {
+  console.log({ isDarkMode });
+  console.log({ currentColor });
+
+  const colorKeys = Object.keys(COLORS_MAP);
+
+  function compareColorObjects(colorObject1, colorObject2) {
+    return JSON.stringify(colorObject1) === JSON.stringify(colorObject2);
+  }
+
   return (
     <section className="color-selector">
-      {COLORS.map((color) => (
+      {colorKeys.map((colorKey) => (
         <div
-          key={color}
-          className={`color-item ${currentColor === color ? "chosen" : ""}`}
-          style={{ backgroundColor: color }}
-          onClick={() => onSetColor(color)}
+          key={colorKey}
+          className={`color-item ${
+            compareColorObjects(currentColor, COLORS_MAP[colorKey])
+              ? "chosen"
+              : ""
+          }`}
+          style={{
+            backgroundColor: isDarkMode
+              ? COLORS_MAP[colorKey].dark
+              : COLORS_MAP[colorKey].light,
+          }}
+          onClick={() => onSetColor(COLORS_MAP[colorKey])}
         ></div>
       ))}
     </section>
