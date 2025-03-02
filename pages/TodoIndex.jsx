@@ -120,6 +120,7 @@ export function TodoIndex() {
           todos={todos}
           onRemoveTodo={onRemoveButtonClick}
           onToggleTodo={onToggleTodo}
+          isDarkMode={loggedInUser.prefs.isDarkMode}
         />
         <hr />
         <h2>Todos Table</h2>

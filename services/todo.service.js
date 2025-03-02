@@ -11,6 +11,33 @@ export const COLORS = [
   "#FFF9C4", // Light Yellow
   "#F5F5F5", // Light Grey
 ];
+
+const COLORS_MAP = {
+  red: {
+    light: "#FFCDD2",
+    dark: "#B71C1C",
+  },
+  purple: {
+    light: "#E1BEE7",
+    dark: "#4A148C",
+  },
+  blue: {
+    light: "#BBDEFB",
+    dark: "#0D47A1",
+  },
+  green: {
+    light: "#C8E6C9",
+    dark: "#1B5E20",
+  },
+  yellow: {
+    light: "#FFF9C4",
+    dark: "#D6A600",
+  },
+  grey: {
+    light: "#F5F5F5",
+    dark: "#616161",
+  },
+};
 _createTodos();
 
 export const todoService = {
@@ -117,8 +144,15 @@ function _createTodo(txt, importance) {
   todo._id = utilService.makeId();
   todo.createdAt = todo.updatedAt =
     Date.now() - utilService.getRandomIntInclusive(0, 1000 * 60 * 60 * 24);
-  todo.bgColor = COLORS[Math.floor(Math.random() * COLORS.length)];
+  todo.bgColor = _getRandomColorObject();
+
   return todo;
+}
+
+function _getRandomColorObject() {
+  const keys = Object.keys(COLORS_MAP);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  return COLORS_MAP[randomKey];
 }
 
 function _setNextPrevTodoId(todo) {
