@@ -3,6 +3,7 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
 import { ColorSelector } from "../cmps/ColorSelector.jsx";
 import { userActions } from "../store/actions/user.actions.js";
 import { todoActions } from "../store/actions/todo.actions.js";
+import { MainWrapper } from "../cmps/MainWrapper.jsx";
 
 const { useState, useEffect } = React;
 const { useNavigate, useParams } = ReactRouterDOM;
@@ -59,8 +60,8 @@ export function TodoEdit() {
       .saveTodo(todoToEdit)
       .then((savedTodo) => {
         navigate("/todo");
-        showSuccessMsg(`Todo Saved (id: ${savedTodo._id})`);
         addUserActivity(`Added Todo: ${savedTodo.txt}`);
+        showSuccessMsg(`Todo Saved (id: ${savedTodo._id})`);
       })
       .catch((err) => {
         showErrorMsg("Cannot save todo");
@@ -78,39 +79,44 @@ export function TodoEdit() {
   const { txt, importance, isDone, bgColor } = todoToEdit;
 
   return (
-    <section className="todo-edit">
-      <form onSubmit={onSaveTodo}>
-        <label htmlFor="txt">Text:</label>
-        <input
-          onChange={handleChange}
-          value={txt}
-          type="text"
-          name="txt"
-          id="txt"
-        />
+    <MainWrapper>
+      <section className="todo-edit">
+        <form onSubmit={onSaveTodo}>
+          <label htmlFor="txt">Text:</label>
+          <input
+            onChange={handleChange}
+            value={txt}
+            type="text"
+            name="txt"
+            id="txt"
+          />
 
-        <label htmlFor="importance">Importance:</label>
-        <input
-          onChange={handleChange}
-          value={importance}
-          min={0}
-          type="number"
-          name="importance"
-          id="importance"
-        />
+          <label htmlFor="importance">Importance:</label>
+          <input
+            onChange={handleChange}
+            value={importance}
+            min={0}
+            type="number"
+            name="importance"
+            id="importance"
+          />
 
-        <label htmlFor="isDone">isDone:</label>
-        <input
-          onChange={handleChange}
-          value={isDone}
-          type="checkbox"
-          name="isDone"
-          id="isDone"
-        />
+          <label htmlFor="isDone">isDone:</label>
+          <input
+            onChange={handleChange}
+            value={isDone}
+            type="checkbox"
+            name="isDone"
+            id="isDone"
+          />
 
-        <ColorSelector onSetColor={handleColorChange} currentColor={bgColor} />
-        <button>Save</button>
-      </form>
-    </section>
+          <ColorSelector
+            onSetColor={handleColorChange}
+            currentColor={bgColor}
+          />
+          <button>Save</button>
+        </form>
+      </section>
+    </MainWrapper>
   );
 }

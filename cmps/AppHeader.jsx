@@ -17,17 +17,27 @@ export function AppHeader() {
   const navigate = useNavigate();
 
   function onLogout() {
-    userActions.logout().catch((err) => {
-      showErrorMsg("OOPs try again");
-    });
+    userActions
+      .logout()
+      .then(navigate("/"))
+      .catch((err) => {
+        showErrorMsg("Oops try again");
+      });
   }
 
   function toggleLogin() {
     setIsLoginSignupOpen((prev) => !prev);
   }
 
+  const darkClass = loggedInUser
+    ? loggedInUser.prefs.isDarkMode
+      ? "dark"
+      : ""
+    : "";
+
   return (
-    <header className="app-header full main-layout">
+    // <header className={`app-header full main-layout ${darkClass}`}>
+    <header className={`app-header full ${darkClass}`}>
       <section className="header-container">
         <h1>React Todo App</h1>
         {loggedInUser ? (
@@ -46,13 +56,6 @@ export function AppHeader() {
             <LoginSignup onToggleLogin={toggleLogin} />
           </ModalFrame>
         )}
-
-        <nav className="app-nav">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/todo">Todos</NavLink>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-        </nav>
       </section>
       <UserMsg />
     </header>

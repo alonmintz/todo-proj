@@ -3,6 +3,7 @@ import {
   SET_USER,
   UPDATE_BALANCE,
   ADD_USER_ACTIVITY,
+  UPDATE_USER_PREFERENCES,
 } from "../reducers/user.reducer.js";
 import { store } from "../store.js";
 
@@ -12,6 +13,7 @@ export const userActions = {
   logout,
   updateBalance,
   addActivity,
+  updatePreferences,
 };
 
 function login(user) {
@@ -50,7 +52,7 @@ function updateBalance({ _id: userId, balance }, activityTxt) {
   const newBalance = balance + 10;
   const newActivity = { txt: activityTxt, at: Date.now() };
   return userService
-    .updateUserBalance(userId, newBalance, newActivity)
+    .updateUser(userId, { newBalance, newActivity })
     .then((loggedUser) => {
       store.dispatch({ type: SET_USER, user: loggedUser });
       return loggedUser;
@@ -64,13 +66,26 @@ function updateBalance({ _id: userId, balance }, activityTxt) {
 function addActivity({ _id: userId }, activityTxt) {
   const newActivity = { txt: activityTxt, at: Date.now() };
   return userService
-    .addUserActivity(userId, newActivity)
+    .updateUser(userId, { newActivity })
     .then((loggedUser) => {
       store.dispatch({ type: ADD_USER_ACTIVITY, activity: newActivity });
       return loggedUser;
     })
     .catch((err) => {
       console.log("user action -> Cannot add activity", err);
+      throw err;
+    });
+}
+
+function updatePreferences({ _id: userId }, newPrefs) {
+  return userService
+    .updateUser(userId, { newPrefs })
+    .then((loggedUser) => {
+      store.dispatch({ type: UPDATE_USER_PREFERENCES, prefs: newPrefs });
+      return loggedUser;
+    })
+    .catch((err) => {
+      console.log("user action -> Cannot update preferences", err);
       throw err;
     });
 }

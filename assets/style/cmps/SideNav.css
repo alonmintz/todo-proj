@@ -1,0 +1,43 @@
+/* .side-nav .app-nav {
+  display: flex;
+  flex-direction: column;
+  border: solid green;
+  background-color: blue;
+} */
+
+.side-nav {
+  position: relative;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-auto-flow: row;
+  align-content: start;
+  background-color: var(--gray2);
+  padding-block-start: 1em;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.side-nav.dark {
+  background-color: rgb(59, 59, 59);
+  color: antiquewhite;
+}
+
+.side-nav > * {
+  grid-column: 2;
+}
+
+.side-nav .app-nav {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-auto-flow: row;
+  border: solid green;
+  align-items: center;
+  gap: 15px;
+  /* background-color: blue; */
+}
+
+a.active {
+  color: rgb(241, 212, 241);
+  font-weight: 600;
+  text-decoration: underline;
+}

@@ -8,8 +8,7 @@ export const userService = {
   getById,
   query,
   getEmptyCredentials,
-  updateUserBalance,
-  addUserActivity,
+  updateUser,
 };
 const STORAGE_KEY_LOGGEDIN = "user";
 const STORAGE_KEY = "userDB";
@@ -38,7 +37,7 @@ function signup({ username, password, fullname }) {
   user.createdAt = user.updatedAt = now;
   user.balance = 0;
   user.activities = [{ txt: "Joined Todo App", at: now }];
-
+  user.prefs = { isDarkMode: false };
   return storageService.post(STORAGE_KEY, user).then(_setLoggedInUser);
 }
 
@@ -51,23 +50,15 @@ function getLoggedInUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN));
 }
 
-function updateUserBalance(userId, newBalance, newActivity) {
+function updateUser(userId, { newBalance, newActivity, newPrefs }) {
   return getById(userId)
     .then((user) => ({
       ...user,
-      balance: newBalance,
-      activities: [newActivity, ...user.activities],
-      updatedAt: Date.now(),
-    }))
-    .then((userToUpdate) => storageService.put(STORAGE_KEY, userToUpdate))
-    .then(_setLoggedInUser);
-}
-
-function addUserActivity(userId, newActivity) {
-  return getById(userId)
-    .then((user) => ({
-      ...user,
-      activities: [newActivity, ...user.activities],
+      balance: newBalance ? newBalance : user.balance,
+      activities: newActivity
+        ? [newActivity, ...user.activities]
+        : user.activities,
+      prefs: newPrefs ? { ...user.prefs, ...newPrefs } : user.prefs,
       updatedAt: Date.now(),
     }))
     .then((userToUpdate) => storageService.put(STORAGE_KEY, userToUpdate))
@@ -80,7 +71,10 @@ function _setLoggedInUser(user) {
     fullname: user.fullname,
     balance: user.balance,
     activities: user.activities,
+    prefs: user.prefs,
   };
+  console.log({ userToSave });
+
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave));
   return userToSave;
 }

@@ -9,6 +9,7 @@ import { ModalFrame } from "../cmps/modal/ModalFrame.jsx";
 import { ConfirmAction } from "../cmps/modal/ConfirmAction.jsx";
 import { utilService } from "../services/util.service.js";
 import { userActions } from "../store/actions/user.actions.js";
+import { MainWrapper } from "../cmps/MainWrapper.jsx";
 
 const { useState, useEffect } = React;
 const { Link, useSearchParams } = ReactRouterDOM;
@@ -107,32 +108,34 @@ export function TodoIndex() {
 
   //   if (isLoading) return <div>Loading...</div>;
   return (
-    <section className="todo-index">
-      <TodoFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-      <div>
-        <Link to="/todo/edit" className="btn">
-          Add Todo
-        </Link>
-      </div>
-      <TodoList
-        todos={todos}
-        onRemoveTodo={onRemoveButtonClick}
-        onToggleTodo={onToggleTodo}
-      />
-      <hr />
-      <h2>Todos Table</h2>
-      <div style={{ width: "60%", margin: "auto" }}>
-        <DataTable todos={todos} onRemoveTodo={onRemoveTodo} />
-      </div>
-      {isConfirmOpen && (
-        <ModalFrame onClose={toggleIsConfirmOpen}>
-          <ConfirmAction
-            action="remove"
-            onConfirm={() => onRemoveTodo(todoToRemove)}
-            onCancel={toggleIsConfirmOpen}
-          />
-        </ModalFrame>
-      )}
-    </section>
+    <MainWrapper>
+      <section className="todo-index">
+        <TodoFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+        <div>
+          <Link to="/todo/edit" className="btn">
+            Add Todo
+          </Link>
+        </div>
+        <TodoList
+          todos={todos}
+          onRemoveTodo={onRemoveButtonClick}
+          onToggleTodo={onToggleTodo}
+        />
+        <hr />
+        <h2>Todos Table</h2>
+        <div style={{ width: "60%", margin: "auto" }}>
+          <DataTable todos={todos} onRemoveTodo={onRemoveTodo} />
+        </div>
+        {isConfirmOpen && (
+          <ModalFrame onClose={toggleIsConfirmOpen}>
+            <ConfirmAction
+              action="remove"
+              onConfirm={() => onRemoveTodo(todoToRemove)}
+              onCancel={toggleIsConfirmOpen}
+            />
+          </ModalFrame>
+        )}
+      </section>
+    </MainWrapper>
   );
 }
