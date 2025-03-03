@@ -127,7 +127,7 @@ export function TodoIndex() {
         <div className="index-buttons">
           <div>
             <Link to="/todo/edit" className="btn">
-              <i class="fa-solid fa-plus"></i> Add Todo
+              <i className="fa-solid fa-plus"></i> Add Todo
             </Link>
           </div>
           <div>
@@ -156,7 +156,7 @@ export function TodoIndex() {
             todos={todos}
             onRemoveTodo={onRemoveButtonClick}
             onToggleTodo={onToggleTodo}
-            isDarkMode={loggedInUser.prefs.isDarkMode}
+            isDarkMode={loggedInUser ? loggedInUser.prefs.isDarkMode : false}
           />
         )}
         {activeDisplayMode === "list" && (

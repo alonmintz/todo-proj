@@ -77,11 +77,15 @@ function addActivity({ _id: userId }, activityTxt) {
     });
 }
 
-function updatePreferences({ _id: userId }, newPrefs) {
+function updatePreferences({ _id: userId }, newFullname, newPrefs) {
   return userService
-    .updateUser(userId, { newPrefs })
+    .updateUser(userId, { newPrefs, newFullname })
     .then((loggedUser) => {
-      store.dispatch({ type: UPDATE_USER_PREFERENCES, prefs: newPrefs });
+      store.dispatch({
+        type: UPDATE_USER_PREFERENCES,
+        prefs: newPrefs,
+        fullname: newFullname,
+      });
       return loggedUser;
     })
     .catch((err) => {

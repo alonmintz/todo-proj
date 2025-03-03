@@ -50,10 +50,14 @@ function getLoggedInUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN));
 }
 
-function updateUser(userId, { newBalance, newActivity, newPrefs }) {
+function updateUser(
+  userId,
+  { newBalance, newActivity, newPrefs, newFullname }
+) {
   return getById(userId)
     .then((user) => ({
       ...user,
+      fullname: newFullname ? newFullname : user.fullname,
       balance: newBalance ? newBalance : user.balance,
       activities: newActivity
         ? [newActivity, ...user.activities]

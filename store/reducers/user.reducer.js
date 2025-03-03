@@ -34,6 +34,7 @@ export function userReducer(state = initialState, cmd = {}) {
         ...state,
         loggedInUser: {
           ...state.loggedInUser,
+          fullname: cmd.fullname,
           prefs: {
             ...state.loggedInUser.prefs,
             ...cmd.prefs,
