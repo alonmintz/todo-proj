@@ -8,7 +8,7 @@
 /*TODO: change all color pallete for dark/light mode*/
 .app-footer.dark {
   background-color: var(--gray3);
-  color: red;
+  color: var(--gray1);
 }
 
 .footer-container {

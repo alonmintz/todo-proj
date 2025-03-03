@@ -6,6 +6,7 @@ const { useState } = React;
 const { useSelector } = ReactRedux;
 
 export function LoginSignup({ onToggleLogin }) {
+    //TODO: re-style 
   //   const user = useSelector((storeState) => storeState.userModule.user);
   const [isSignup, setIsSignUp] = useState(false);
   const [credentials, setCredentials] = useState(

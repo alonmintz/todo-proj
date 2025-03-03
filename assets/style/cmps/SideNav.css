@@ -1,10 +1,3 @@
-/* .side-nav .app-nav {
-  display: flex;
-  flex-direction: column;
-  border: solid green;
-  background-color: blue;
-} */
-
 .side-nav {
   position: relative;
   display: grid;
@@ -27,13 +20,11 @@
 
 .side-nav .app-nav {
   position: sticky;
-  top: 0;
+  top: 1rem;
   display: grid;
   grid-auto-flow: row;
-  border: solid green;
   align-items: center;
   gap: 15px;
-  /* background-color: blue; */
 }
 
 a.active {

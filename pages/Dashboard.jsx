@@ -6,7 +6,7 @@ import { todoService } from "../services/todo.service.js";
 export function Dashboard() {
   const [todos, setTodos] = useState([]);
   const [importanceStats, setImportanceStats] = useState([]);
-
+  //TODO: fix dashboard page
   useEffect(() => {
     todoService.query().then(setTodos);
     todoService.getImportanceStats().then(setImportanceStats);

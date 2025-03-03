@@ -10,6 +10,8 @@ const { useNavigate, useParams } = ReactRouterDOM;
 const { useSelector } = ReactRedux;
 
 export function TodoEdit() {
+  //TODO: re-arrange and re-style the page
+
   const loggedInUser = useSelector(
     (storeState) => storeState.userModule.loggedInUser
   );

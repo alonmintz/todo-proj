@@ -68,11 +68,13 @@ export function AppHeader() {
         <h1>React Todo App</h1>
         {loggedInUser && <span> Balance: {loggedInUser.balance}</span>}
         {loggedInUser ? (
-          <i
-            className="fa-solid fa-user"
+          <div
             onClick={toggleDropdown}
-            style={{ cursor: "pointer" }}
-          ></i>
+            style={{ cursor: "pointer", display: "flex", gap: "5px" }}
+          >
+            <i className="fa-solid fa-user"></i>
+            <span>{loggedInUser.fullname}</span>
+          </div>
         ) : (
           //   <img
           //     src="path_to_your_image.jpg"

@@ -10,7 +10,7 @@ import { MainWrapper } from "../cmps/MainWrapper.jsx";
 export function About() {
   const titleRef = useRef();
   const count = 1000001;
-
+  //TODO: refactor all of the page
   function onViewMore() {
     alert("curiosity killed the cat");
   }

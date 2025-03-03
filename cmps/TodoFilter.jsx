@@ -37,35 +37,41 @@ export function TodoFilter({ filterBy, onSetFilterBy }) {
     <section className="todo-filter">
       <h2>Filter Todos</h2>
       <form>
-        <input
-          value={txt}
-          onChange={handleChange}
-          type="search"
-          placeholder="By Txt"
-          id="txt"
-          name="txt"
-        />
-        <label htmlFor="importance">Importance: </label>
-        <input
-          value={importance}
-          onChange={handleChange}
-          type="number"
-          min={0}
-          placeholder="By Importance"
-          id="importance"
-          name="importance"
-        />
-        <label htmlFor="isDone">Status: </label>
-        <select
-          name="isDone"
-          id="isDone"
-          value={isDone || ""}
-          onChange={handleChange}
-        >
-          <option value={""}>All</option>
-          <option value={false}>Active</option>
-          <option value={true}>Done</option>
-        </select>
+        <div className="filter-item">
+          <input
+            value={txt}
+            onChange={handleChange}
+            type="search"
+            placeholder="By Text"
+            id="txt"
+            name="txt"
+          />
+        </div>
+        <div className="filter-item">
+          <label htmlFor="importance">Importance: </label>
+          <input
+            value={importance}
+            onChange={handleChange}
+            type="number"
+            min={0}
+            placeholder="By Importance"
+            id="importance"
+            name="importance"
+          />
+        </div>
+        <div className="filter-item">
+          <label htmlFor="isDone">Status: </label>
+          <select
+            name="isDone"
+            id="isDone"
+            value={isDone || ""}
+            onChange={handleChange}
+          >
+            <option value={""}>All</option>
+            <option value={false}>Active</option>
+            <option value={true}>Done</option>
+          </select>
+        </div>
         <button hidden>Set Filter</button>
       </form>
     </section>

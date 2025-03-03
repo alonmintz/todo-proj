@@ -1,5 +1,28 @@
 .todo-filter {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
   background-color: var(--clr2bg);
   padding: 1em;
-  /* margin: 1em 0; */
+  border: solid var(--gray2);
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.dark .todo-filter {
+  background-color: var(--clr2);
+}
+
+.todo-filter form {
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.todo-filter input,
+select {
+  max-width: 100px;
 }

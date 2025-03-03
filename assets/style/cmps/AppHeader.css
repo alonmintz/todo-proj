@@ -9,7 +9,7 @@
 /*TODO: change all color pallete for dark/light mode*/
 .app-header.dark {
   background-color: var(--gray3);
-  color: red;
+  color: var(--gray1);
 }
 
 .header-container {
@@ -40,6 +40,8 @@
 .dropdown-menu li {
   padding: 10px 15px; 
   cursor: pointer; 
+  display: flex;
+  gap: 5px;
 }
 
 .dropdown-menu li:hover {

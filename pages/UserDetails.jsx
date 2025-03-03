@@ -110,14 +110,12 @@ export function UserDetails() {
     );
   }
 
-  //TODO: complete user details page with edit+ activities + style
-
   return (
     <MainWrapper>
       <section className="user-details">
         <form onSubmit={onSubmit} className="user-form">
           {isEditMode ? (
-            <div className="name-container">
+            <div className="user-data-container">
               <input
                 type="text"
                 name="fullname"
@@ -130,14 +128,19 @@ export function UserDetails() {
               </button>
             </div>
           ) : (
-            <div className="name-container">
+            <div className="user-data-container">
               <h1>{loggedInUser.fullname}</h1>
               <button type="button" onClick={toggleEditMode}>
                 <i className="fa-solid fa-pen-to-square"></i>
               </button>
             </div>
           )}
-          <ToggleButton val={isDarkModeToSave} setVal={onSetDarkMode} />
+          <div className="user-data-container">
+            <i className="fa-solid fa-sun"></i>
+            <ToggleButton val={isDarkModeToSave} setVal={onSetDarkMode} />
+            <i className="fa-solid fa-moon"></i>
+          </div>
+
           <button>Save</button>
         </form>
         <button onClick={toggleShowActivities}>
@@ -146,9 +149,10 @@ export function UserDetails() {
         {isShowActivities && (
           <ul>
             {loggedInUser.activities.map((activity) => (
-              <li key={activity.at}>{`${formatTimeAgo(activity.at)}: ${
-                activity.txt
-              }`}</li>
+              <li key={activity.at}>
+                <span>{`${formatTimeAgo(activity.at)}:`}</span>
+                <span>{` ${activity.txt}.`}</span>
+              </li>
             ))}
           </ul>
         )}

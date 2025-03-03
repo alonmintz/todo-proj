@@ -9,7 +9,7 @@ export function TodoDetails() {
   const [todo, setTodo] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
-
+  //TODO: re-arrange and re-style the page
   useEffect(() => {
     loadTodo();
   }, [params.todoId]);
