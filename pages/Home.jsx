@@ -40,9 +40,6 @@ export function Home() {
     setRandomTodo(activeTodos[randomIndex]);
   }
 
-  console.log({ randomTodo });
-
-  //TODO: finish home page
   return (
     <MainWrapper>
       <section className="home">
@@ -66,10 +63,6 @@ export function Home() {
             )}
           </React.Fragment>
         )}
-        {/* <h1>We've Noticed You Haven't Completed This Yet...</h1>
-        {randomTodo && (
-          <RandomTodoPreview todo={randomTodo} isDarkMode={isDarkMode} />
-        )} */}
       </section>
     </MainWrapper>
   );
