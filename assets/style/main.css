@@ -24,9 +24,11 @@
 @import "cmps/TodoPreview.css";
 @import "cmps/TodoDetails.css";
 @import "cmps/TodoEdit.css";
+@import "cmps/RandomTodoPreview.css";
 
 @import "cmps/modal.css";
 @import "cmps/ColorSelector.css";
 @import "cmps/SideNav.css";
 @import "cmps/MainWrapper.css";
 @import "cmps/UserDetails.css";
+@import "cmps/Home.css";

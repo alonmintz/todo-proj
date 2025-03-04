@@ -10,8 +10,6 @@
 }
 
 .main-layout > * {
-  /* grid-column: 2; */
-  /* grid-column: 3; */
 }
 
 .main-layout .full {
@@ -35,7 +33,6 @@ aside {
 main {
   grid-area: m;
   min-height: 90vh;
-  /* padding-inline-start: 1.1rem; */
 }
 
 footer {
