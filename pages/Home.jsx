@@ -12,8 +12,8 @@ export function Home() {
   const [randomTodo, setRandomTodo] = useState(null);
   const [isAllDone, setIsAllDone] = useState(false);
 
-  const isDarkMode = useSelector(
-    (storeState) => storeState.userModule.loggedInUser.prefs.isDarkMode
+  const loggedInUser = useSelector(
+    (storeState) => storeState.userModule.loggedInUser
   );
 
   useEffect(() => {
@@ -57,7 +57,12 @@ export function Home() {
           <React.Fragment>
             <h1>We've Noticed You Haven't Completed This Yet...</h1>
             {randomTodo && (
-              <RandomTodoPreview todo={randomTodo} isDarkMode={isDarkMode} />
+              <RandomTodoPreview
+                todo={randomTodo}
+                isDarkMode={
+                  loggedInUser ? loggedInUser.prefs.isDarkMode : false
+                }
+              />
             )}
           </React.Fragment>
         )}
