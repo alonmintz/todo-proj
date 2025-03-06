@@ -12,7 +12,7 @@ export function About() {
 
         <h2>Overview</h2>
         <p>
-          This is a simple and efficient To-Do application built with modern web
+          This is a simple and efficient Todo application built with modern web
           technologies. It is designed as a frontend project to practice the use
           of Redux for state management while providing an intuitive user
           interface to manage tasks effectively.

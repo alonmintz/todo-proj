@@ -160,9 +160,7 @@ export function TodoIndex() {
           />
         )}
         {activeDisplayMode === "list" && (
-          <div style={{ width: "60%", margin: "auto" }}>
-            <DataTable todos={todos} onRemoveTodo={onRemoveButtonClick} />
-          </div>
+          <DataTable todos={todos} onRemoveTodo={onRemoveButtonClick} />
         )}
         <hr />
         {isConfirmOpen && (

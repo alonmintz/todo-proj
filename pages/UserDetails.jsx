@@ -1,5 +1,5 @@
 import { userActions } from "../store/actions/user.actions.js";
-import { showErrorMsg } from "../services/event-bus.service.js";
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
 import { ToggleButton } from "../cmps/ToggleButton.jsx";
 import { UPDATE_USER_PREFERENCES } from "../store/reducers/user.reducer.js";
 import { MainWrapper } from "../cmps/MainWrapper.jsx";
@@ -60,6 +60,9 @@ export function UserDetails() {
         isDarkMode: isDarkModeToSave,
       })
       .then(() => setIsEditMode(false))
+      .then(() => {
+        showSuccessMsg("Preferences Saved");
+      })
       .catch((err) => {
         console.log(err);
         showErrorMsg("Error Updating User");

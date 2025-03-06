@@ -1,0 +1,10 @@
+.confirm-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-action .btn-group button {
+  border-radius: 50%;
+}

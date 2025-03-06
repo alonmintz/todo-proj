@@ -8,6 +8,7 @@
 }
 
 .todo-list li {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -24,4 +25,12 @@
 
 .dark .todo-list li:hover {
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.todo-list li .btn-group {
+  display: flex;
+  justify-content: space-around;
+  button {
+    border-radius: 100%;
+  }
 }
