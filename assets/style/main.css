@@ -24,6 +24,7 @@
 @import "cmps/TodoEdit.css";
 @import "cmps/RandomTodoPreview.css";
 @import "cmps/ConfirmAction.css";
+@import "cmps/LoginSignup.css";
 
 @import "cmps/modal.css";
 @import "cmps/ColorSelector.css";

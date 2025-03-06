@@ -2,7 +2,6 @@ import { TodoPreview } from "./TodoPreview.jsx";
 const { Link } = ReactRouterDOM;
 
 export function TodoList({ todos, onRemoveTodo, onToggleTodo, isDarkMode }) {
-  //TODO: re-style the todo "card" (buttons)
   return (
     <ul className="todo-list">
       {todos.map((todo) => (

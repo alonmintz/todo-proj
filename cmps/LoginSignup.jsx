@@ -6,8 +6,6 @@ const { useState } = React;
 const { useSelector } = ReactRedux;
 
 export function LoginSignup({ onToggleLogin }) {
-    //TODO: re-style 
-  //   const user = useSelector((storeState) => storeState.userModule.user);
   const [isSignup, setIsSignUp] = useState(false);
   const [credentials, setCredentials] = useState(
     userService.getEmptyCredentials()
@@ -52,7 +50,7 @@ export function LoginSignup({ onToggleLogin }) {
   }
 
   return (
-    <div className="login-page">
+    <div className="login-signup">
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -87,12 +85,6 @@ export function LoginSignup({ onToggleLogin }) {
       <span onClick={() => setIsSignUp(!isSignup)}>
         {isSignup ? "Already a member? Login here" : "New user? Signup here"}
       </span>
-
-      {/* <div className="btns">
-        <a href="#" onClick={() => setIsSignUp(!isSignup)}>
-          {isSignup ? "Already a member? Login" : "New user? Signup here"}
-        </a>
-      </div> */}
     </div>
   );
 }

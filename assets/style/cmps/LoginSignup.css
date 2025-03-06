@@ -1,0 +1,17 @@
+.login-signup {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.login-signup .login-form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+}
+
+.login-signup > span {
+  cursor: pointer;
+}

@@ -75,12 +75,6 @@ export function AppHeader() {
             <span>{loggedInUser.fullname}</span>
           </div>
         ) : (
-          //   <img
-          //     src="path_to_your_image.jpg"
-          //     alt="Menu Icon"
-          //     onClick={toggleDropdown}
-          //     style={{ cursor: "pointer" }}
-          //   />
           <button onClick={toggleLogin}>Login</button>
         )}
 
