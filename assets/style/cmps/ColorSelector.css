@@ -1,6 +1,7 @@
 .color-selector {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .color-selector .color-item {

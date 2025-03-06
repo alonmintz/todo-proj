@@ -10,8 +10,6 @@ const { useNavigate, useParams } = ReactRouterDOM;
 const { useSelector } = ReactRedux;
 
 export function TodoEdit() {
-  //TODO: re-arrange and re-style the page
-
   const loggedInUser = useSelector(
     (storeState) => storeState.userModule.loggedInUser
   );
@@ -83,33 +81,38 @@ export function TodoEdit() {
     <MainWrapper>
       <section className="todo-edit">
         <form onSubmit={onSaveTodo}>
-          <label htmlFor="txt">Text:</label>
-          <input
-            onChange={handleChange}
-            value={txt}
-            type="text"
-            name="txt"
-            id="txt"
-          />
-
-          <label htmlFor="importance">Importance:</label>
-          <input
-            onChange={handleChange}
-            value={importance}
-            min={0}
-            type="number"
-            name="importance"
-            id="importance"
-          />
-
-          <label htmlFor="isDone">isDone:</label>
-          <input
-            onChange={handleChange}
-            value={isDone}
-            type="checkbox"
-            name="isDone"
-            id="isDone"
-          />
+          <div className="form-item">
+            <label htmlFor="txt">Todo:</label>
+            <input
+              onChange={handleChange}
+              value={txt}
+              type="text"
+              name="txt"
+              id="txt"
+            />
+          </div>
+          <div className="form-item">
+            <label htmlFor="importance">Importance:</label>
+            <input
+              onChange={handleChange}
+              value={importance}
+              min={1}
+              max={10}
+              type="number"
+              name="importance"
+              id="importance"
+            />
+          </div>
+          <div className="form-item">
+            <label htmlFor="isDone">Done:</label>
+            <input
+              onChange={handleChange}
+              value={isDone}
+              type="checkbox"
+              name="isDone"
+              id="isDone"
+            />
+          </div>
 
           <ColorSelector
             onSetColor={handleColorChange}

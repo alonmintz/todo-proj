@@ -3,13 +3,13 @@ import { showErrorMsg } from "../services/event-bus.service.js";
 import { MainWrapper } from "../cmps/MainWrapper.jsx";
 
 const { useState, useEffect } = React;
-const { useParams, useNavigate, Link } = ReactRouterDOM;
+const { useParams, useNavigate, Link, NavLink } = ReactRouterDOM;
 
 export function TodoDetails() {
   const [todo, setTodo] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
-  //TODO: re-arrange and re-style the page
+
   useEffect(() => {
     loadTodo();
   }, [params.todoId]);
@@ -25,36 +25,33 @@ export function TodoDetails() {
       });
   }
 
-  function onBack() {
-    //TODO: change to NAV-LINK
-    navigate("/todo");
-  }
-
   if (!todo)
     return (
       <MainWrapper>
         <section className="todo-details">
-          <div className="loader">Loading...</div>;
+          <div className="loader">Loading...</div>
         </section>
       </MainWrapper>
     );
   return (
     <MainWrapper>
       <section className="todo-details">
+        <NavLink to="/todo" className="back">
+          Back to list
+        </NavLink>
         <h1 className={todo.isDone ? "done" : ""}>{todo.txt}</h1>
-        <h2>{todo.isDone ? "Done!" : "In your list"}</h2>
-
-        <h1>Todo importance: {todo.importance}</h1>
+        <h4>Status: {todo.isDone ? "Done!" : "In your list"}</h4>
+        <h4>Importance: {todo.importance}</h4>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim rem
           accusantium, itaque ut voluptates quo? Vitae animi maiores nisi,
           assumenda molestias odit provident quaerat accusamus, reprehenderit
           impedit, possimus est ad?
         </p>
-        <button onClick={onBack}>Back to list</button>
-        <div>
-          <Link to={`/todo/${todo.nextTodoId}`}>Next Todo</Link> |
+        <div className="prev-next">
           <Link to={`/todo/${todo.prevTodoId}`}>Previous Todo</Link>
+          <span> | </span>
+          <Link to={`/todo/${todo.nextTodoId}`}>Next Todo</Link>
         </div>
       </section>
     </MainWrapper>
