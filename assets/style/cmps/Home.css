@@ -8,3 +8,10 @@
   justify-items: center;
   gap: 10px;
 }
+
+.home h1,
+h4 {
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+}

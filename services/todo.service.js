@@ -119,11 +119,13 @@ function getFilterFromSearchParams(searchParams) {
 
 function getImportanceStats() {
   return storageService.query(TODO_KEY).then((todos) => {
-    const todoCountByImportanceMap = _getTodoCountByImportanceMap(todos);
-    const data = Object.keys(todoCountByImportanceMap).map((speedName) => ({
-      title: speedName,
-      value: todoCountByImportanceMap[speedName],
-    }));
+    const todoImportancePercentageMap = _getTodoPercentByImportanceMap(todos);
+    const data = Object.keys(todoImportancePercentageMap).map(
+      (importanceLevel) => ({
+        title: importanceLevel,
+        value: todoImportancePercentageMap[importanceLevel],
+      })
+    );
     return data;
   });
 }
@@ -172,7 +174,8 @@ function _setNextPrevTodoId(todo) {
   });
 }
 
-function _getTodoCountByImportanceMap(todos) {
+function _getTodoPercentByImportanceMap(todos) {
+  const totalTodos = todos.length;
   const todoCountByImportanceMap = todos.reduce(
     (map, todo) => {
       if (todo.importance < 3) map.low++;
@@ -182,7 +185,33 @@ function _getTodoCountByImportanceMap(todos) {
     },
     { low: 0, normal: 0, urgent: 0 }
   );
-  return todoCountByImportanceMap;
+  if (totalTodos > 0) {
+    return {
+      low: _customFloor((todoCountByImportanceMap.low / totalTodos) * 100),
+      normal: _customFloor(
+        (todoCountByImportanceMap.normal / totalTodos) * 100
+      ),
+      urgent: _customFloor(
+        (todoCountByImportanceMap.urgent / totalTodos) * 100
+      ),
+    };
+  } else {
+    return { low: 0, normal: 0, urgent: 0 };
+  }
+}
+
+function _customFloor(value) {
+  const decimalPart = value - Math.floor(value);
+  let roundingFactor = 10;
+  while ((decimalPart * roundingFactor) % 1 === 0 && roundingFactor < 1000) {
+    roundingFactor *= 10;
+  }
+  const firstSignificantDigit = Math.floor(decimalPart * roundingFactor) % 10;
+  if (firstSignificantDigit < 5) {
+    return Math.floor(value);
+  } else {
+    return Math.ceil(value);
+  }
 }
 
 // Data Model:

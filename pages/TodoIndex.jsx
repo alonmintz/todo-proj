@@ -161,7 +161,7 @@ export function TodoIndex() {
         )}
         {activeDisplayMode === "list" && (
           <div style={{ width: "60%", margin: "auto" }}>
-            <DataTable todos={todos} onRemoveTodo={onRemoveTodo} />
+            <DataTable todos={todos} onRemoveTodo={onRemoveButtonClick} />
           </div>
         )}
         <hr />

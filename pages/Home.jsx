@@ -52,7 +52,7 @@ export function Home() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <h1>We've Noticed You Haven't Completed This Yet...</h1>
+            <h4>We've Noticed You Haven't Completed This Yet...</h4>
             {randomTodo && (
               <RandomTodoPreview
                 todo={randomTodo}
