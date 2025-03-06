@@ -4,11 +4,15 @@ import { MainWrapper } from "../cmps/MainWrapper.jsx";
 
 const { useState, useEffect } = React;
 const { useParams, useNavigate, Link, NavLink } = ReactRouterDOM;
+const { useSelector } = ReactRedux;
 
 export function TodoDetails() {
   const [todo, setTodo] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
+  const isDarkMode = useSelector(
+    (storeState) => storeState.userModule.loggedInUser.prefs.isDarkMode
+  );
 
   useEffect(() => {
     loadTodo();
@@ -39,7 +43,16 @@ export function TodoDetails() {
         <NavLink to="/todo" className="back">
           Back to list
         </NavLink>
-        <h1 className={todo.isDone ? "done" : ""}>{todo.txt}</h1>
+        <h1
+          className={todo.isDone ? "done" : ""}
+          style={{
+            backgroundColor: isDarkMode
+              ? todo.bgColor.dark
+              : todo.bgColor.light,
+          }}
+        >
+          {todo.txt}
+        </h1>
         <h4>Status: {todo.isDone ? "Done!" : "In your list"}</h4>
         <h4>Importance: {todo.importance}</h4>
         <p>
@@ -49,9 +62,13 @@ export function TodoDetails() {
           impedit, possimus est ad?
         </p>
         <div className="prev-next">
-          <Link to={`/todo/${todo.prevTodoId}`}>Previous Todo</Link>
+          <Link to={`/todo/${todo.prevTodoId}`} className="prev">
+            Previous Todo
+          </Link>
           <span> | </span>
-          <Link to={`/todo/${todo.nextTodoId}`}>Next Todo</Link>
+          <Link to={`/todo/${todo.nextTodoId}`} className="next">
+            Next Todo
+          </Link>
         </div>
       </section>
     </MainWrapper>

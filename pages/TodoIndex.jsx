@@ -135,7 +135,9 @@ export function TodoIndex() {
               onClick={() => toggleActiveDisplayMode("icon")}
               style={{
                 backgroundColor:
-                  activeDisplayMode === "icon" ? "lightgray" : "white",
+                  activeDisplayMode === "icon"
+                    ? "var(--light-yellow-bg2)"
+                    : "var(--gray1)",
               }}
             >
               <i className="fa-solid fa-cubes"></i>
@@ -144,7 +146,9 @@ export function TodoIndex() {
               onClick={() => toggleActiveDisplayMode("list")}
               style={{
                 backgroundColor:
-                  activeDisplayMode === "list" ? "lightgray" : "white",
+                  activeDisplayMode === "list"
+                    ? "var(--light-yellow-bg2)"
+                    : "var(--gray1)",
               }}
             >
               <i className="fa-solid fa-table-list"></i>

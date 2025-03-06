@@ -1,0 +1,8 @@
+.dashboard h1 {
+  width: fit-content;
+  background-color: var(--light-yellow-bg2);
+  word-wrap: break-word;
+  padding: 5px;
+  padding-inline-end: 2em;
+  border-radius: 0 25px 25px 0;
+}

@@ -2,13 +2,13 @@
   height: 100%;
   width: 100%;
   padding: 1em;
-  background-color: var(--clr1bg-light);
-  color: var(--gray3);
+  /* background-color: var(--clr1bg-light); */
+  /* color: var(--gray3); */
   transition: background-color 0.5s, color 0.5s;
 }
 
 .main-wrapper.dark {
-  background-color: var(--gray3);
+  /* background-color: var(--gray3); */
   color: var(--gray1);
 }
 

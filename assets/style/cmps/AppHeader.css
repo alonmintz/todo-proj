@@ -1,14 +1,16 @@
 .app-header {
   position: relative;
-  background-color: var(--clr1);
-  color: var(--clr2bg-light);
+  background-color: var(--light-yellow-bg1);
+  /* color: var(--clr2bg-light); */
   padding-block: 1em;
   transition: background-color 0.5s, color 0.5s;
+  border-bottom: 1px solid var(--gray1);
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.5);
 }
 
 /*TODO: change all color pallete for dark/light mode*/
 .app-header.dark {
-  background-color: var(--gray3);
+  /* background-color: var(--gray3); */
   color: var(--gray1);
 }
 
@@ -48,8 +50,8 @@
   background-color: #f0f0f0; 
 }
 
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
   .app-header {
     color: var(--clr2bg-light);
   }
-}
+} */

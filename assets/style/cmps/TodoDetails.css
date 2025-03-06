@@ -10,14 +10,25 @@
 
 .todo-details h1 {
   text-align: center;
-  width: 100%;
+  /* width: 100%; */
   word-wrap: break-word;
+  padding: 5px;
+  padding-inline-end: 2em;
+  border-radius: 0 25px 25px 0;
 }
 
 .todo-details .back {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: var(--light-yellow-bg1);
+  padding: 0.5em;
+  border-radius: 25px 0 0 25px;
+  transition: background-color ease 0.3s;
+}
+
+.todo-details .back:hover {
+  background-color: var(--light-yellow-bg2);
 }
 
 .todo-details p {
@@ -30,6 +41,24 @@
   p {
     border-bottom: 2px solid var(--gray1);
   }
+}
+
+.prev-next a {
+  background-color: var(--light-yellow-bg1);
+  padding: 0.5em;
+  transition: background-color ease 0.3s;
+}
+
+.prev-next a.next {
+  border-radius: 0 25px 25px 0;
+}
+
+.prev-next a.prev {
+  border-radius: 25px 0 0 25px;
+}
+
+.prev-next a:hover {
+  background-color: var(--light-yellow-bg2);
 }
 
 @media (max-width: 620px) {

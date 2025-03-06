@@ -65,7 +65,7 @@ export function AppHeader() {
   return (
     <header className={`app-header full ${darkClass}`}>
       <section className="header-container">
-        <h2>React Todo App</h2>
+        <h2>Todo App</h2>
         {loggedInUser ? (
           <div
             onClick={toggleDropdown}

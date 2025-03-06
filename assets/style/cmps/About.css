@@ -1,5 +1,27 @@
+.about h1,
+.about h2 {
+  width: fit-content;
+  background-color: var(--light-yellow-bg2);
+  word-wrap: break-word;
+  padding: 5px;
+  padding-inline-end: 2em;
+  border-radius: 0 25px 25px 0;
+}
+
 .about ul li {
   margin-block-end: 2px;
+}
+
+.about a {
+  padding: 5px;
+}
+
+.about a {
+  background-color: var(--gray1);
+}
+
+.about a.active {
+  background-color: var(--light-yellow-bg2);
 }
 
 .about-team li * {
@@ -9,4 +31,8 @@
 .about-team li i {
   font-size: x-large;
   padding: 10px;
+}
+
+.about-team a {
+  background-color: transparent;
 }

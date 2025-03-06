@@ -1,7 +1,7 @@
 export function AboutTeam() {
   return (
     <section className="about-team">
-      <h2>Best Team</h2>
+      <h2>The Team</h2>
       <ul>
         <li>
           <span>
@@ -10,21 +10,22 @@ export function AboutTeam() {
             web applications and enhance my skills. I'm extremely motivated to
             learn and grow every day. I invite you to come see my progress on:{" "}
           </span>
-          <br />
-          <a
-            href="https://github.com/alonmintz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i class="fa fa-github"></i>
-          </a>
-          <a
-            href="https://linkedin.com/in/alon-mintz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i class="fa fa-linkedin-square"></i>
-          </a>
+          <div style={{ textAlign: "center" }}>
+            <a
+              href="https://github.com/alonmintz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa fa-github"></i>
+            </a>
+            <a
+              href="https://linkedin.com/in/alon-mintz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa fa-linkedin-square"></i>
+            </a>
+          </div>
         </li>
       </ul>
     </section>

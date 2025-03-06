@@ -12,9 +12,11 @@ export function RandomTodoPreview({ todo, isDarkMode }) {
     >
       <h1>{todo.txt}</h1>
       <h3>Importance: {todo.importance}</h3>
-      <button>
-        <Link to={`/todo/${todo._id}`}>Details</Link>
-      </button>
+      {/* <button> */}
+      <Link to={`/todo/${todo._id}`} className="btn">
+        <i className="fa fa-eye"></i>
+      </Link>
+      {/* </button> */}
     </article>
   );
 }

@@ -1,9 +1,10 @@
-const { useRef } = React;
+const { useRef, useState } = React;
 const { Outlet, NavLink } = ReactRouterDOM;
 import { MainWrapper } from "../cmps/MainWrapper.jsx";
 
 export function About() {
   const titleRef = useRef();
+  const [selectedLink, setSelectedLink] = useState(null);
 
   return (
     <MainWrapper>
@@ -45,8 +46,21 @@ export function About() {
           <li>User balance tracking feature.</li>
         </ul>
         <nav>
-          <NavLink to="/about/team">Team</NavLink> |
-          <NavLink to="/about/vision">Vision</NavLink>
+          <NavLink
+            to="/about/team"
+            className="btn"
+            onClick={() => setSelectedLink("team")}
+          >
+            Team
+          </NavLink>
+          <span> | </span>
+          <NavLink
+            to="/about/vision"
+            className="btn"
+            onClick={() => setSelectedLink("vision")}
+          >
+            Vision
+          </NavLink>
         </nav>
 
         <section>

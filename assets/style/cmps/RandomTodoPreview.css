@@ -21,6 +21,10 @@
   word-wrap: break-word;
 }
 
+.random-todo-preview a {
+  border-radius: 50%;
+}
+
 .dark .random-todo-preview {
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
 }

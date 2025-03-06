@@ -10,8 +10,8 @@
 }
 
 .data-table thead tr {
-  background-color: #009879;
-  color: #ffffff;
+  background-color: var(--light-yellow-bg1);
+  color: var(--gray3);
   text-align: left;
   font-weight: bold;
 }
@@ -22,7 +22,7 @@
 }
 
 .data-table tbody tr {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid var(--gray1);
 }
 
 .data-table tbody tr:nth-of-type(even) {
@@ -39,7 +39,7 @@
 
 .data-table .toggle-expand {
   cursor: pointer;
-  color: #009879;
+  color: var(--gray3);
 }
 
 td .remove-btn {

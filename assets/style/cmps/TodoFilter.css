@@ -2,7 +2,7 @@
   display: grid;
   grid-auto-flow: row;
   justify-items: center;
-  background-color: var(--clr2bg);
+  background-color: var(--light-brown-bg1);
   padding: 1em;
   border: solid var(--gray2);
   border-radius: 25px;
