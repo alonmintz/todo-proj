@@ -119,10 +119,10 @@ export function TodoIndex() {
     setActiveDisplayMode(mode);
   }
 
-  //   if (isLoading) return <div>Loading...</div>;
   return (
     <MainWrapper>
       <section className="todo-index">
+        {isLoading && <div className="loader">Loading...</div>}
         <TodoFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
         <div className="index-buttons">
           <div>

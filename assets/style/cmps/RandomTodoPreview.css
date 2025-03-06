@@ -19,7 +19,3 @@
 .dark .random-todo-preview {
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
 }
-
-.random-todo-preview h1 {
-  font-size: 1.5em;
-}

@@ -1,0 +1,11 @@
+.about ul li {
+  margin-block-end: 2px;
+}
+
+.about-team li * {
+  margin-inline-end: 10px;
+}
+
+.about-team li i {
+  font-size: x-large;
+}

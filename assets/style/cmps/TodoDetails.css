@@ -1,18 +1,16 @@
 .todo-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .todo-details h1 {
-    color: var(--clr1);
-    font-size: 2em;
-    
+  color: var(--clr1);
 }
 .todo-details h5 {
-    color: var(--clr2);
+  color: var(--clr2);
 }
 .todo-details img {
-    max-width: 200px;
-    display: block;
-    margin: auto;
+  max-width: 200px;
+  display: block;
+  margin: auto;
 }

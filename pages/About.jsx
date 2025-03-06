@@ -1,37 +1,49 @@
-const { useRef, useState } = React;
+const { useRef } = React;
 const { Outlet, NavLink } = ReactRouterDOM;
-// const { PropTypes } = PropTypes
-
-import { utilService } from "../services/util.service.js";
-import { AboutTeam } from "../cmps/AboutTeam.jsx";
-import { AboutVision } from "../cmps/AboutVision.jsx";
 import { MainWrapper } from "../cmps/MainWrapper.jsx";
 
 export function About() {
   const titleRef = useRef();
-  const count = 1000001;
-  //TODO: refactor all of the page
-  function onViewMore() {
-    alert("curiosity killed the cat");
-  }
+
   return (
     <MainWrapper>
       <section className="about">
-        <h1 ref={titleRef}>About todos and us...</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio dolore
-          sapiente, iste animi corporis nisi atque tempora assumenda dolores.
-          Nobis nam dolorem rerum illo facilis nemo sit voluptatibus laboriosam
-          necessitatibus!
-        </p>
-        <button
-          onClick={() => {
-            utilService.animateCSS(titleRef.current);
-          }}
-        >
-          Animate
-        </button>
+        <h1 ref={titleRef}>Todo App</h1>
 
+        <h2>Overview</h2>
+        <p>
+          This is a simple and efficient To-Do application built with modern web
+          technologies. It is designed as a frontend project to practice the use
+          of Redux for state management while providing an intuitive user
+          interface to manage tasks effectively.
+        </p>
+
+        <h2>Technologies Used</h2>
+        <ul>
+          <li>
+            <strong>React</strong>: Component-based UI development.
+          </li>
+          <li>
+            <strong>Redux</strong>: State management.
+          </li>
+          <li>
+            <strong>JavaScript</strong>: Core scripting language.
+          </li>
+          <li>
+            <strong>HTML & CSS</strong>: Structuring and styling the
+            application.
+          </li>
+        </ul>
+
+        <h2>Features</h2>
+        <ul>
+          <li>Add, edit, and delete tasks.</li>
+          <li>Mark tasks as completed.</li>
+          <li>Responsive design for various screen sizes.</li>
+          <li>Local storage support for task persistence.</li>
+          <li>Dark mode support for better user experience.</li>
+          <li>User balance tracking feature.</li>
+        </ul>
         <nav>
           <NavLink to="/about/team">Team</NavLink> |
           <NavLink to="/about/vision">Vision</NavLink>
@@ -40,87 +52,7 @@ export function About() {
         <section>
           <Outlet />
         </section>
-        <hr />
-        <ul>
-          {["Ja", "Ka", "La"].map((name) => (
-            <React.Fragment key={name}>
-              <li>{name}</li>
-              <li className="divider">---</li>
-            </React.Fragment>
-          ))}
-        </ul>
-        <hr />
-        <FancyBox title="Hola!" onClose={() => console.log("ok, closing")}>
-          <h3>{count.toLocaleString()} Followers</h3>
-          <button onClick={onViewMore}>Tell me More</button>
-        </FancyBox>
-        <hr />
-        <h3>Click to resize:</h3>
-        <SplitPane left={<AboutTeam />} right={<AboutVision />} />
-
-        <hr />
-        {/* <Title  />
-            <Title txt="ab"  /> */}
       </section>
     </MainWrapper>
   );
 }
-
-function FancyBox({ title = "Hello", onClose, children }) {
-  return (
-    <div className="fancy-box">
-      <button style={{ float: "right" }} onClick={onClose}>
-        x
-      </button>
-      <h3>{title}</h3>
-      {children}
-    </div>
-  );
-}
-
-FancyBox.propTypes = {
-  onClose: PropTypes.func.isRequired,
-};
-
-function SplitPane(props) {
-  const [width, setWidth] = useState(30);
-
-  return (
-    <div
-      className="split-pane"
-      style={{
-        display: "flex",
-      }}
-    >
-      <div
-        style={{ width: width + "%" }}
-        onClick={() => {
-          if (width + 10 <= 100) setWidth(width + 10);
-        }}
-      >
-        {props.left}
-      </div>
-      <div
-        style={{ flex: 1 }}
-        onClick={() => {
-          if (width > 10) setWidth(width - 10);
-        }}
-      >
-        {props.right}
-      </div>
-    </div>
-  );
-}
-
-const Title = (props) => <h1>Title: {props.txt}</h1>;
-
-Title.propTypes = {
-  txt(props, propName, componentName) {
-    if (!(propName in props)) {
-      throw new Error(`missing ${propName}`);
-    }
-    if (props[propName].length < 6) {
-      throw new Error(`${propName} was too short`);
-    }
-  },
-};

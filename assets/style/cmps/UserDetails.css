@@ -11,10 +11,6 @@
   width: 100%;
 }
 
-.user-details h1 {
-  font-size: 1.75em;
-}
-
 .user-form {
   position: relative;
   display: grid;
@@ -50,7 +46,6 @@
 
 .user-form .user-data-container button {
   position: absolute;
-  /* bottom: 25%; */
   left: 100%;
 }
 
