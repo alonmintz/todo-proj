@@ -4,14 +4,13 @@
   grid-template-columns: subgrid;
   grid-auto-flow: row;
   align-content: start;
-  /* background-color: var(--gray2); */
   padding-block-start: 1em;
   transition: background-color 0.5s, color 0.5s;
 }
 
 .side-nav.dark {
-  /* background-color: rgb(59, 59, 59); */
-  /* color: antiquewhite; */
+  background-color: var(--gray3);
+  color: var(--white);
 }
 
 .side-nav > * {
@@ -33,25 +32,30 @@
 }
 
 .app-nav a.active {
-  /* color: rgb(241, 212, 241); */
   font-weight: 600;
-  /* text-decoration: underline; */
-  background-color: #ffd95f; /* Active background color */
-  color: #2c3930; /* Active text color */
+  background-color: var(--light-yellow-bg2);
+  color: var(--dark-blue-h1);
   border-radius: 0 25px 25px 0;
+}
+
+.dark .app-nav a.active {
+  background-color: var(--dark-yellow2-opacity);
+  color: var(--white);
 }
 
 .app-nav a.active:hover {
-  /* font-weight: 600; */
-  background-color: #ffd95f; /* Active background color */
-  /* color: #d70654;  */
-  /* border-radius: 0 25px 25px 0; */
+  background-color: var(--light-yellow-bg2);
+}
+
+.dark .app-nav a.active:hover {
+  background-color: var(--dark-yellow2-opacity);
 }
 
 .app-nav a:hover {
-  /* color: rgb(241, 212, 241); */
-  /* font-weight: 600; */
-  /* text-decoration: underline; */
-  background-color: #ffefc8; /* Active background color */
+  background-color: var(--light-yellow-bg1);
   border-radius: 0 25px 25px 0;
+}
+
+.dark .app-nav a:hover {
+  background-color: var(--dark-yellow1-opacity);
 }

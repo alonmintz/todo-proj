@@ -10,7 +10,6 @@
 
 .todo-details h1 {
   text-align: center;
-  /* width: 100%; */
   word-wrap: break-word;
   padding: 5px;
   padding-inline-end: 2em;
@@ -31,6 +30,14 @@
   background-color: var(--light-yellow-bg2);
 }
 
+.dark .todo-details .back {
+  background-color: var(--dark-blue-bg2);
+}
+
+.dark .todo-details .back:hover {
+  background-color: var(--dark-blue-bg1);
+}
+
 .todo-details p {
   padding: 1em;
   margin-block-end: 1em;
@@ -49,6 +56,10 @@
   transition: background-color ease 0.3s;
 }
 
+.dark .prev-next a {
+  background-color: var(--dark-blue-bg2);
+}
+
 .prev-next a.next {
   border-radius: 0 25px 25px 0;
 }
@@ -58,7 +69,7 @@
 }
 
 .prev-next a:hover {
-  background-color: var(--light-yellow-bg2);
+  background-color: var(--dark-blue-bg1);
 }
 
 @media (max-width: 620px) {

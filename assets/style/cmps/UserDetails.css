@@ -20,8 +20,8 @@
   gap: 10px;
 
   width: 50%;
-  background-color: var(--clr2bg);
-  border: solid var(--gray3);
+  background-color: var(--light-yellow-bg1);
+  border: solid var(--gray1);
   border-radius: 25px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   padding: 10px;
@@ -29,7 +29,7 @@
 }
 
 .dark .user-form {
-  background-color: var(--clr2);
+  background-color: var(--dark-blue-bg2);
 }
 
 .user-form .user-data-container {
@@ -47,12 +47,13 @@
 .user-form .user-data-container button {
   position: absolute;
   left: 100%;
+  border-radius: 50%;
 }
 
 .user-details ul {
   list-style: none;
-  background-color: var(--clr2bg);
-  border: solid var(--gray3);
+  background-color: var(--light-yellow-bg1);
+  border: solid var(--gray1);
   border-radius: 25px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   padding: 33px;
@@ -60,7 +61,7 @@
 }
 
 .dark .user-details ul {
-  background-color: var(--clr2);
+  background-color: var(--dark-blue-bg2);
 }
 
 .user-details ul li {

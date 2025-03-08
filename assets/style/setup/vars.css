@@ -14,8 +14,14 @@
 
 :root {
   --white: rgb(255, 255, 255);
-  /*light*/
+  /*light mode*/
   --light-yellow-bg1: rgb(255, 239, 200);
   --light-yellow-bg2: rgb(255, 217, 95);
   --light-brown-bg1: rgb(220, 215, 201);
+  --dark-blue-h1: rgb(44, 57, 48);
+  /*dark mode*/
+  --dark-blue-bg1: rgb(63, 79, 68);
+  --dark-blue-bg2: rgb(44, 57, 48);
+  --dark-yellow1-opacity: rgb(255, 239, 200, 0.1);
+  --dark-yellow2-opacity: rgb(255, 217, 95, 0.5);
 }

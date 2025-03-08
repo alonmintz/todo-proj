@@ -26,10 +26,13 @@
 .chart span {
   margin: 0 1em;
   display: block;
-  /* background: rgba(209, 236, 250, 0.75); */
   background: var(--light-yellow-bg1);
   animation: draw 1s ease-in-out;
   font-size: 0.8em;
+}
+
+.dark .chart span {
+  background: var(--dark-yellow1-opacity);
 }
 
 .chart span:before {

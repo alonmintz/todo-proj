@@ -18,7 +18,6 @@ import { AppFooter } from "./cmps/AppFooter.jsx";
 import { UserMsg } from "./cmps/UserMsg.jsx";
 
 export function RootCmp() {
-  //TODO: color palette (dark & light) and fonts
   return (
     <Provider store={store}>
       <Router>

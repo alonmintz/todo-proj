@@ -8,6 +8,11 @@
   border-radius: 0 25px 25px 0;
 }
 
+.dark .about h1,
+.dark .about h2 {
+  background-color: var(--dark-yellow2-opacity);
+}
+
 .about ul li {
   margin-block-end: 2px;
 }
@@ -24,6 +29,10 @@
   background-color: var(--light-yellow-bg2);
 }
 
+.dark .about a.active {
+  background-color: var(--dark-yellow2-opacity);
+}
+
 .about-team li * {
   margin-inline-end: 10px;
 }
@@ -35,4 +44,23 @@
 
 .about-team a {
   background-color: transparent;
+}
+
+.about-team .social-link i {
+  background-color: var(--gray1);
+  border-radius: 100%;
+  transition: background-color ease 0.3s;
+}
+
+.about-team .social-link i:hover {
+  background-color: var(--light-yellow-bg2);
+  border-radius: 100%;
+}
+
+.dark .about-team .social-link i {
+  background-color: var(--dark-blue-bg2);
+}
+
+.dark .about-team .social-link i:hover {
+  background-color: var(--dark-blue-bg1);
 }

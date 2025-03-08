@@ -133,23 +133,17 @@ export function TodoIndex() {
           <div>
             <button
               onClick={() => toggleActiveDisplayMode("icon")}
-              style={{
-                backgroundColor:
-                  activeDisplayMode === "icon"
-                    ? "var(--light-yellow-bg2)"
-                    : "var(--gray1)",
-              }}
+              className={`display-radio-btn ${
+                activeDisplayMode === "icon" ? "selected" : ""
+              }`}
             >
               <i className="fa-solid fa-cubes"></i>
             </button>
             <button
               onClick={() => toggleActiveDisplayMode("list")}
-              style={{
-                backgroundColor:
-                  activeDisplayMode === "list"
-                    ? "var(--light-yellow-bg2)"
-                    : "var(--gray1)",
-              }}
+              className={`display-radio-btn ${
+                activeDisplayMode === "list" ? "selected" : ""
+              }`}
             >
               <i className="fa-solid fa-table-list"></i>
             </button>

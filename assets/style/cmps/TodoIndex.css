@@ -10,3 +10,15 @@
   align-items: center;
   padding: 5px;
 }
+
+.display-radio-btn {
+  background-color: var(--gray1);
+}
+
+.display-radio-btn.selected {
+  background-color: var(--light-yellow-bg2);
+}
+
+.dark .display-radio-btn.selected {
+  background-color: var(--dark-yellow2-opacity);
+}

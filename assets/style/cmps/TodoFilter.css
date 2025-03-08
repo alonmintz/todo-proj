@@ -2,6 +2,9 @@
   display: grid;
   grid-auto-flow: row;
   justify-items: center;
+
+  width: 60vw;
+  align-self: center;
   background-color: var(--light-brown-bg1);
   padding: 1em;
   border: solid var(--gray2);
@@ -11,13 +14,13 @@
 }
 
 .dark .todo-filter {
-  background-color: var(--clr2);
+  background-color: var(--dark-blue-bg2);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
 .todo-filter form {
   display: flex;
   justify-content: space-between;
-  /* flex-direction: column; */
   flex-wrap: wrap;
   width: 100%;
 }

@@ -96,7 +96,7 @@ export function UserDetails() {
       formattedTime = `${days} days ago`;
     } else {
       // 1 week and up
-      const date = new Date(item.at).toLocaleDateString();
+      const date = new Date(activityTime).toLocaleDateString();
       formattedTime = date;
     }
 

@@ -15,6 +15,17 @@ button:hover,
   transition: 0.3s;
 }
 
+.dark button,
+.dark .btn {
+  background-color: var(--dark-blue-bg2);
+  color: var(--gray1);
+}
+
+.dark button:hover,
+.dark .btn:hover {
+  background-color: var(--dark-blue-bg1);
+}
+
 input:focus {
   background-color: var(--light-yellow-bg1);
   transition: background-color 1s;

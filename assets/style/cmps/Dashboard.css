@@ -6,3 +6,7 @@
   padding-inline-end: 2em;
   border-radius: 0 25px 25px 0;
 }
+
+.dark .dashboard h1 {
+  background-color: var(--dark-yellow2-opacity);
+}

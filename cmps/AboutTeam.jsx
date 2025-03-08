@@ -15,6 +15,7 @@ export function AboutTeam() {
               href="https://github.com/alonmintz"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-link"
             >
               <i class="fa fa-github"></i>
             </a>
@@ -22,6 +23,7 @@ export function AboutTeam() {
               href="https://linkedin.com/in/alon-mintz"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-link"
             >
               <i class="fa fa-linkedin-square"></i>
             </a>
